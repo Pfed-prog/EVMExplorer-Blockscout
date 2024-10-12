@@ -1,7 +1,7 @@
 {
   "name": "@evmexplorer/blockscout",
-  "version": "0.0.3",
-  "description": "evmexplorer blockscout v2 sdk",
+  "version": "0.0.4",
+  "description": "evmexplorer typescript blockscout v2 sdk",
   "main": "dist/index.js",
   "homepage": "https://github.com/Pfed-prog/EVMExplorer-Blockscout",
   "scripts": {
@@ -19,7 +19,7 @@
     "blockscout",
     "optimism",
     "ethereum",
-    "token",
+    "erc20-token",
     "explorer",
     "etherscan",
     "smart-contracts",

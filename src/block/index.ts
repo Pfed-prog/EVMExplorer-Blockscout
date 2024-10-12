@@ -1,4 +1,7 @@
-import type { TransactionAddressBlockscout } from '../transaction';
+import type {
+  TransactionAddressBlockscout,
+  TransactionBlockscout,
+} from '../transaction';
 
 export type BlockInfoBlockscout = {
   base_fee_per_gas: string;
@@ -29,4 +32,13 @@ export type BlockInfoBlockscout = {
   type: string;
   uncles_hashes: Array<any>;
   withdrawals_count: number;
+};
+
+export type BlockTransactionsBlockscout = {
+  items: TransactionBlockscout[];
+  next_page_params: {
+    block_number: number;
+    index: number;
+    items_count: number;
+  };
 };

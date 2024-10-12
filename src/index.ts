@@ -1,5 +1,9 @@
-export type { AddressInfoBlockscout } from './address';
-export type { BlockInfoBlockscout } from './block';
+export type {
+  AddressInfoBlockscout,
+  AddressTransactionsBlockscout,
+  CountersContractBlockscout,
+} from './address';
+export type { BlockInfoBlockscout, BlockTransactionsBlockscout } from './block';
 export type { TokenBlockscout } from './token';
 export type {
   Fee,

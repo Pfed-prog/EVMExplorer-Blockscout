@@ -1,4 +1,12 @@
 import type { TokenBlockscout } from '../token';
+import type { TransactionBlockscout } from '../transaction';
+
+export type CountersContractBlockscout = {
+  gas_usage_count: string;
+  token_transfers_count: string;
+  transactions_count: string;
+  validations_count: string;
+};
 
 export type AddressInfoBlockscout = {
   block_number_balance_updated_at: number;
@@ -31,4 +39,17 @@ export type AddressInfoBlockscout = {
   token: TokenBlockscout | null;
   watchlist_address_id: null;
   watchlist_names: [];
+};
+
+export type AddressTransactionsBlockscout = {
+  items: TransactionBlockscout[];
+  next_page_params: {
+    block_number: number;
+    fee: string;
+    hash: string;
+    index: number;
+    inserted_at: string;
+    items_count: number;
+    value: string;
+  };
 };

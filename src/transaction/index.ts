@@ -1,17 +1,17 @@
 import type { TokenBlockscout } from '../token';
 
-type Fee = {
+export type Fee = {
   type: string;
   value: string;
 };
 
-type DecodedInput = {
+export type DecodedInput = {
   method_call: string;
   method_id: string;
   parameters: TransactionParameter[];
 };
 
-type TransactionParameter = {
+export type TransactionParameter = {
   name: string;
   type: string;
   value: string;

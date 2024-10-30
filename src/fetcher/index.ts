@@ -47,9 +47,12 @@ export async function fetchAddressTransactions(
   const chainProvider: string = getChainProviderBlockscout(chainId);
   const query: string = `https://${chainProvider}/api/v2/addresses/${address}/transactions`;
 
-  const response: Response = await fetch(query);
+  const response: Response = await fetch(query, { mode: 'cors' });
   const body = (await response.json()) as AddressTransactionsBlockscout;
-  return body.items;
+
+  if (body && body.items) return body.items;
+
+  throw new Error('no transactions');
 }
 
 export async function fetchAddressInfo(
@@ -59,12 +62,10 @@ export async function fetchAddressInfo(
   const chainProvider: string = getChainProviderBlockscout(chainId);
   const query: string = `https://${chainProvider}/api/v2/addresses/${address}`;
 
-  const response: Response = await fetch(query);
+  const response: Response = await fetch(query, { mode: 'cors' });
   const body = (await response.json()) as AddressInfo;
-  if (!body.hash)
-    return {
-      hash: address,
-    };
+
+  if (!body.hash) throw new Error('no address info data');
 
   return body;
 }

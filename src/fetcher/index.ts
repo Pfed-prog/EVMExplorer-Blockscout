@@ -1,6 +1,7 @@
 import type {
   AddressTransactionsBlockscout,
   CountersContractBlockscout,
+  AddressInfoBlockscout,
 } from '../address';
 import type {
   BlockInfoBlockscout,
@@ -8,7 +9,6 @@ import type {
 } from '../block';
 import type { TokenBlockscout } from '../token';
 import type { TransactionBlockscout } from '../transaction';
-import type { AddressInfo } from '../types';
 import { getChainProviderBlockscout } from '../utils';
 
 export async function fetchContractCounters(
@@ -58,12 +58,12 @@ export async function fetchAddressTransactions(
 export async function fetchAddressInfo(
   address: string,
   chainId?: number,
-): Promise<AddressInfo> {
+): Promise<AddressInfoBlockscout> {
   const chainProvider: string = getChainProviderBlockscout(chainId);
   const query: string = `https://${chainProvider}/api/v2/addresses/${address}`;
 
   const response: Response = await fetch(query, { mode: 'cors' });
-  const body = (await response.json()) as AddressInfo;
+  const body = (await response.json()) as AddressInfoBlockscout;
 
   if (!body.hash) throw new Error('no address info data');
 

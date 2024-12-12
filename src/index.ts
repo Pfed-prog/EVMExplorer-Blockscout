@@ -22,5 +22,4 @@ export type {
   TransactionAddressBlockscout,
   TransactionBlockscout,
 } from './transaction';
-export type { AddressInfo } from './types';
 export { getChainProviderBlockscout } from './utils';

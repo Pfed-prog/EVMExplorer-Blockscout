@@ -1,4 +1,8 @@
-import { fetchAddressTransactions, fetchAddressInfo } from './index.js';
+import {
+  fetchAddressTransactions,
+  fetchAddressInfo,
+  fetchTransactionBlockscout,
+} from './index.js';
 import { test, expect } from 'vitest';
 
 test('fetchAddressTransactions Empty Address', async () => {
@@ -13,7 +17,7 @@ test('fetchAddressTransactions Ethereum', async () => {
   );
 
   expect(transactions.length).toBe(50);
-});
+}, 10000);
 
 test('fetchAddressTransactions Base', async () => {
   const transactions = await fetchAddressTransactions(
@@ -22,13 +26,22 @@ test('fetchAddressTransactions Base', async () => {
   );
 
   expect(transactions.length).toBe(50);
-});
+}, 20000);
 
-test('fetchAddress Base', async () => {
+test('fetchAddressInfo Base', async () => {
   const address = await fetchAddressInfo(
     '0x940181a94A35A4569E4529A3CDfB74e38FD98631',
     8453,
   );
 
   expect(address.hash).toBe('0x940181a94A35A4569E4529A3CDfB74e38FD98631');
-});
+}, 10000);
+
+test('fetchTransactionBlockscout Ethereum', async () => {
+  const data = await fetchTransactionBlockscout(
+    '0xdc7ddf3d0e53532eeeda7a7a99c88255ccee5a3b4404441278cbbd79b4c85086',
+  );
+  expect(data.hash).toBe(
+    '0xdc7ddf3d0e53532eeeda7a7a99c88255ccee5a3b4404441278cbbd79b4c85086',
+  );
+}, 10000);

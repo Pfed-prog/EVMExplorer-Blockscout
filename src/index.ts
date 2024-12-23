@@ -4,15 +4,11 @@ export type {
   CountersContractBlockscout,
 } from './address';
 export type { BlockInfoBlockscout, BlockTransactionsBlockscout } from './block';
-export {
-  fetchContractCounters,
-  fetchAddressTransactions,
-  fetchAddressInfo,
-  fetchTransactionBlockscout,
-  fetchTokenInfo,
-  fetchBlockInfoBlockscout,
-  fetchBlockTransactionsBlockscout,
-} from './fetcher';
+export type {
+  SearchItemsBlockscout,
+  NextPageSearch,
+  SearchBlockscout,
+} from './search';
 export type { TokenBlockscout } from './token';
 export type {
   Fee,
@@ -22,4 +18,15 @@ export type {
   TransactionAddressBlockscout,
   TransactionBlockscout,
 } from './transaction';
+
+export {
+  fetchContractCounters,
+  fetchAddressTransactions,
+  fetchAddressInfo,
+  fetchTransactionBlockscout,
+  fetchTokenInfo,
+  fetchBlockInfoBlockscout,
+  fetchBlockTransactionsBlockscout,
+} from './fetcher';
+
 export { getChainProviderBlockscout } from './utils';

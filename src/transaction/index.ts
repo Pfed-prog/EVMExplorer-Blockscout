@@ -80,7 +80,7 @@ export type TransactionBlockscout = {
   base_fee_per_gas: string;
   timestamp: string;
   nonce: number;
-  block: number | null;
+  block?: number | null;
   transaction_types: string[];
   exchange_rate: string;
   block_number: number;

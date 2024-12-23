@@ -8,6 +8,6 @@ export type TokenBlockscout = {
   name: string;
   symbol: string;
   total_supply: string | null;
-  type: string;
+  type: 'ERC-20' | 'ERC-721' | 'ERC-1155';
   volume_24h: string | null;
 };

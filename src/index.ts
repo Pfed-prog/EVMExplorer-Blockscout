@@ -9,6 +9,7 @@ export type {
   NextPageSearch,
   SearchBlockscout,
 } from './search';
+export type { StatsBlockscout } from './stats';
 export type { TokenBlockscout } from './token';
 export type {
   Fee,
@@ -28,5 +29,6 @@ export {
   fetchBlockInfoBlockscout,
   fetchBlockTransactionsBlockscout,
 } from './fetcher';
-
+export { fetchSearchBlockscout } from './search';
+export { fetchStatsBlockscout } from './stats';
 export { getChainProviderBlockscout } from './utils';

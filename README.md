@@ -35,7 +35,7 @@ console.log(data);
 
 The `fetchTransactionBlockscout` function returns an object with the following properties:
 
-```json
+```yaml
 {
   priority_fee: '70439166556560',
   tx_burnt_fee: '676806248593230',

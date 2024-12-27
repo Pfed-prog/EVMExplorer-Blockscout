@@ -2,20 +2,29 @@ import { getChainProviderBlockscout } from '../utils';
 
 export type SearchItemsBlockscout = {
   address: string;
-  address_url: string;
+  address_url?: string;
   certified: boolean;
-  circulating_market_cap: string | null;
-  exchange_rate: string | null;
-  icon_url: string | null;
+  ens_info?: ENSInfo;
+  circulating_market_cap?: string | null;
+  exchange_rate?: string | null;
+  icon_url?: string | null;
   is_smart_contract_verified: boolean;
-  is_verified_via_admin_panel: boolean;
+  is_verified_via_admin_panel?: boolean;
+  name: string | null;
+  priority: 0 | 2;
+  symbol?: string;
+  token_type?: 'ERC-20' | 'ERC-721' | 'ERC-1155';
+  token_url?: string;
+  total_supply?: string;
+  type: 'token' | 'ens_domain';
+  url: string;
+};
+
+export type ENSInfo = {
   name: string;
-  priority: 0;
-  symbol: string;
-  token_type: 'ERC-20' | 'ERC-721' | 'ERC-1155';
-  token_url: string;
-  total_supply: string;
-  type: 'token';
+  address_hash: string;
+  expiry_data: null;
+  names_count: number;
 };
 
 export type NextPageSearch = {

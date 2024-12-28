@@ -7,13 +7,6 @@ import type {
 
 import { getChainProviderBlockscout } from '../utils';
 
-export type CountersContractBlockscout = {
-  gas_usage_count: string;
-  token_transfers_count: string;
-  transactions_count: string;
-  validations_count: string;
-};
-
 export type AddressInfoBlockscout = {
   block_number_balance_updated_at: number;
   coin_balance: string;
@@ -47,6 +40,13 @@ export type AddressTransactionsBlockscout = {
   next_page_params: NextPageParams;
 };
 
+export type CountersContractBlockscout = {
+  gas_usage_count: string;
+  token_transfers_count: string;
+  transactions_count: string;
+  validations_count: string;
+};
+
 export type InternalTransactionsObjects = {
   block_index: number;
   block_number: number;
@@ -76,7 +76,36 @@ export type InternalTransactionsBlockscout = {
   next_page_params: NextPageInternalParams;
 };
 
-export async function fetchContractCounters(
+export type TokenTransfersObjects = {
+  block_hash: string;
+  block_number: number;
+  from: TransactionAddressBlockscout;
+  log_index: number;
+  method: string;
+  timestamp: string;
+  to: TransactionAddressBlockscout;
+  token: TokenBlockscout;
+  total: {
+    decimals: number;
+    value: string;
+  };
+  transaction_hash: string;
+  type: 'token_transfer' | 'token_transfers' | 'token_minting';
+};
+
+export type NextPageTokenTransfersParams = {
+  block_number: number;
+  index: number;
+  items_count: number;
+  transaction_index: number;
+};
+
+export type TokenTransfersBlockscout = {
+  items: TokenTransfersObjects[];
+  next_page_params: NextPageTokenTransfersParams;
+};
+
+export async function fetchAddressCounters(
   address: string,
   chainId?: number,
 ): Promise<CountersContractBlockscout> {
@@ -107,15 +136,22 @@ export async function fetchContractCounters(
 
 export async function fetchAddressTransactions(
   address: string,
+  parameters?: string,
   chainId?: number,
-): Promise<TransactionBlockscout[]> {
+): Promise<AddressTransactionsBlockscout> {
   const chainProvider: string = getChainProviderBlockscout(chainId);
-  const query: string = `https://${chainProvider}/api/v2/addresses/${address}/transactions`;
+  let query: string = '';
+  if (parameters) {
+    query = `https://${chainProvider}/api/v2/addresses/${address}/transactions?${parameters}`;
+  }
+  if (!parameters) {
+    query = `https://${chainProvider}/api/v2/addresses/${address}/transactions`;
+  }
 
-  const response: Response = await fetch(query, { mode: 'cors' });
+  const response: Response = await fetch(query);
   const body = (await response.json()) as AddressTransactionsBlockscout;
 
-  if (body && body.items) return body.items;
+  if (body) return body;
 
   throw new Error('no transactions');
 }
@@ -139,7 +175,7 @@ export async function fetchInternalTransactionsBlockscout(
   hash: string,
   filter?: string,
   chainId?: number,
-): Promise<InternalTransactionsObjects[]> {
+): Promise<InternalTransactionsBlockscout> {
   const chainProvider: string = getChainProviderBlockscout(chainId);
 
   let query: string = '';
@@ -151,7 +187,28 @@ export async function fetchInternalTransactionsBlockscout(
   }
   const response: Response = await fetch(query);
   const body = (await response.json()) as InternalTransactionsBlockscout;
-  if (body && body.items) return body.items;
+  if (body) return body;
+
+  throw new Error('no transactions');
+}
+
+export async function fetchTokenTransfersBlockscout(
+  hash: string,
+  parameters?: string,
+  chainId?: number,
+): Promise<TokenTransfersBlockscout> {
+  const chainProvider: string = getChainProviderBlockscout(chainId);
+
+  let query: string = '';
+  if (parameters) {
+    query = `https://${chainProvider}/api/v2/addresses/${hash}/token-transfers?${query}`;
+  }
+  if (!parameters) {
+    query = `https://${chainProvider}/api/v2/addresses/${hash}/token-transfers`;
+  }
+  const response: Response = await fetch(query);
+  const body = (await response.json()) as any;
+  if (body) return body;
 
   throw new Error('no transactions');
 }

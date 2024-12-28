@@ -1,5 +1,9 @@
 import type { TokenBlockscout } from '../token';
-import type { TransactionBlockscout, NextPageParams } from '../transaction';
+import type {
+  TransactionBlockscout,
+  NextPageParams,
+  TransactionAddressBlockscout,
+} from '../transaction';
 
 import { getChainProviderBlockscout } from '../utils';
 
@@ -41,6 +45,35 @@ export type AddressInfoBlockscout = {
 export type AddressTransactionsBlockscout = {
   items: TransactionBlockscout[];
   next_page_params: NextPageParams;
+};
+
+export type InternalTransactionsObjects = {
+  block_index: number;
+  block_number: number;
+  created_contract: null;
+  error: null;
+  from: TransactionAddressBlockscout;
+  gas_limit: string;
+  index: number;
+  success: boolean;
+  timestamp: string;
+  to: TransactionAddressBlockscout;
+  transaction_hash: string;
+  transaction_index: number;
+  type: 'delegatecall' | 'call';
+  value: string;
+};
+
+export type NextPageInternalParams = {
+  block_number: number;
+  index: number;
+  items_count: number;
+  transaction_index: number;
+};
+
+export type InternalTransactionsBlockscout = {
+  items: InternalTransactionsObjects[];
+  next_page_params: NextPageInternalParams;
 };
 
 export async function fetchContractCounters(
@@ -100,4 +133,25 @@ export async function fetchAddressInfo(
   if (!body.hash) throw new Error('no address info data');
 
   return body;
+}
+
+export async function fetchInternalTransactionsBlockscout(
+  hash: string,
+  filter?: string,
+  chainId?: number,
+): Promise<InternalTransactionsObjects[]> {
+  const chainProvider: string = getChainProviderBlockscout(chainId);
+
+  let query: string = '';
+  if (filter) {
+    query = `https://${chainProvider}/api/v2/addresses/${hash}/internal-transactions?filter=${filter}`;
+  }
+  if (!filter) {
+    query = `https://${chainProvider}/api/v2/addresses/${hash}/internal-transactions`;
+  }
+  const response: Response = await fetch(query);
+  const body = (await response.json()) as InternalTransactionsBlockscout;
+  if (body && body.items) return body.items;
+
+  throw new Error('no transactions');
 }

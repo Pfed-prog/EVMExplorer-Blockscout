@@ -1,6 +1,10 @@
 import { test, expect } from 'vitest';
 
-import { fetchAddressTransactions, fetchAddressInfo } from './index.js';
+import {
+  fetchAddressTransactions,
+  fetchAddressInfo,
+  fetchInternalTransactionsBlockscout,
+} from './index.js';
 
 test('fetchAddressTransactions Empty Address', async () => {
   await expect(
@@ -32,4 +36,11 @@ test('fetchAddressInfo Base', async () => {
   );
 
   expect(address.hash).toBe('0x940181a94A35A4569E4529A3CDfB74e38FD98631');
+}, 10000);
+
+test('fetchInternalTransactionBlockscout Ethereum', async () => {
+  const data = await fetchInternalTransactionsBlockscout(
+    '0x22C1f6050E56d2876009903609a2cC3fEf83B415',
+  );
+  expect(data.length).toBe(50);
 }, 10000);

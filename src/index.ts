@@ -1,7 +1,10 @@
 export type {
   AddressInfoBlockscout,
   AddressTransactionsBlockscout,
+  InternalTransactionsBlockscout,
+  InternalTransactionsObjects,
   CountersContractBlockscout,
+  NextPageInternalParams,
 } from './address';
 export type { BlockInfoBlockscout, BlockTransactionsBlockscout } from './block';
 export type {
@@ -24,6 +27,7 @@ export {
   fetchContractCounters,
   fetchAddressTransactions,
   fetchAddressInfo,
+  fetchInternalTransactionsBlockscout,
 } from './address';
 export {
   fetchBlockInfoBlockscout,

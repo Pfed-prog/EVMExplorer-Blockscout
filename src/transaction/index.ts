@@ -1,5 +1,7 @@
 import type { TokenBlockscout } from '../token';
 
+import { getChainProviderBlockscout } from '../utils';
+
 export type Fee = {
   type: string;
   value: string;
@@ -96,3 +98,15 @@ export type NextPageParams = {
   items_count: number;
   value: string;
 };
+
+export async function fetchTransactionBlockscout(
+  hash: string,
+  chainId?: number,
+): Promise<TransactionBlockscout> {
+  const chainProvider: string = getChainProviderBlockscout(chainId);
+  const query: string = `https://${chainProvider}/api/v2/transactions/${hash}`;
+
+  const response: Response = await fetch(query);
+  const body = (await response.json()) as TransactionBlockscout;
+  return body;
+}

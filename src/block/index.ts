@@ -1,3 +1,5 @@
+import { getChainProviderBlockscout } from '../utils';
+
 import type {
   TransactionAddressBlockscout,
   TransactionBlockscout,
@@ -42,3 +44,33 @@ export type BlockTransactionsBlockscout = {
     items_count: number;
   };
 };
+
+export async function fetchBlockInfoBlockscout(
+  chainId: number,
+  block?: number,
+) {
+  if (block) {
+    const chainProvider: string = getChainProviderBlockscout(chainId);
+    const query: string = `https://${chainProvider}/api/v2/blocks/${block}`;
+
+    const response: Response = await fetch(query);
+    const body = (await response.json()) as BlockInfoBlockscout;
+    return body;
+  }
+  throw new Error('no block');
+}
+
+export async function fetchBlockTransactionsBlockscout(
+  chainId: number,
+  block?: number,
+) {
+  if (block) {
+    const chainProvider: string = getChainProviderBlockscout(chainId);
+    const query: string = `https://${chainProvider}/api/v2/blocks/${block}/transactions`;
+
+    const response: Response = await fetch(query);
+    const body = (await response.json()) as BlockTransactionsBlockscout;
+    return body;
+  }
+  throw new Error('no block');
+}

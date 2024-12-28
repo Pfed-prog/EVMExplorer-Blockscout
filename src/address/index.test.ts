@@ -1,9 +1,6 @@
-import {
-  fetchAddressTransactions,
-  fetchAddressInfo,
-  fetchTransactionBlockscout,
-} from './index.js';
 import { test, expect } from 'vitest';
+
+import { fetchAddressTransactions, fetchAddressInfo } from './index.js';
 
 test('fetchAddressTransactions Empty Address', async () => {
   await expect(
@@ -35,13 +32,4 @@ test('fetchAddressInfo Base', async () => {
   );
 
   expect(address.hash).toBe('0x940181a94A35A4569E4529A3CDfB74e38FD98631');
-}, 10000);
-
-test('fetchTransactionBlockscout Ethereum', async () => {
-  const data = await fetchTransactionBlockscout(
-    '0xdc7ddf3d0e53532eeeda7a7a99c88255ccee5a3b4404441278cbbd79b4c85086',
-  );
-  expect(data.hash).toBe(
-    '0xdc7ddf3d0e53532eeeda7a7a99c88255ccee5a3b4404441278cbbd79b4c85086',
-  );
 }, 10000);

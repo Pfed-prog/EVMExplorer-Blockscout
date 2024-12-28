@@ -24,11 +24,13 @@ export {
   fetchContractCounters,
   fetchAddressTransactions,
   fetchAddressInfo,
-  fetchTransactionBlockscout,
-  fetchTokenInfo,
+} from './address';
+export {
   fetchBlockInfoBlockscout,
   fetchBlockTransactionsBlockscout,
-} from './fetcher';
+} from './block';
 export { fetchSearchBlockscout } from './search';
 export { fetchStatsBlockscout } from './stats';
+export { fetchTokenInfo } from './token';
+export { fetchTransactionBlockscout } from './transaction';
 export { getChainProviderBlockscout } from './utils';

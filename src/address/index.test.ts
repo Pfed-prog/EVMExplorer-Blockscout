@@ -13,7 +13,7 @@ test('fetchAddressTransactions Empty Address', async () => {
   const data: AddressTransactionsBlockscout = await fetchAddressTransactions(
     '0x793e271B7630b1655b28BE2ab4BE93D05cf1c98e',
   );
-  expect(data.message).toBe('Not found');
+  expect(data?.message).toBe('Not found');
 });
 
 test('fetchAddressTransactions Ethereum', async () => {
@@ -21,7 +21,7 @@ test('fetchAddressTransactions Ethereum', async () => {
     '0x398eC7346DcD622eDc5ae82352F02bE94C62d119',
   );
 
-  expect(transactions.items.length).toBe(50);
+  expect(transactions?.items?.length).toBe(50);
 }, 10000);
 
 test('fetchAddressTransactions second page Ethereum', async () => {
@@ -29,13 +29,13 @@ test('fetchAddressTransactions second page Ethereum', async () => {
     '0x398eC7346DcD622eDc5ae82352F02bE94C62d119',
   );
 
-  expect(transactions.items.length).toBe(50);
+  expect(transactions?.items?.length).toBe(50);
 
   const transactionsSecondPage = await fetchAddressTransactions(
     '0x398eC7346DcD622eDc5ae82352F02bE94C62d119',
-    `?block_number=${transactions.next_page_params.block_number}&index=${transactions.next_page_params.index}&items_count=${transactions.next_page_params.items_count}`,
+    `?block_number=${transactions?.next_page_params?.block_number}&index=${transactions?.next_page_params?.index}&items_count=${transactions?.next_page_params?.items_count}`,
   );
-  expect(transactionsSecondPage.items.length).toBe(50);
+  expect(transactionsSecondPage?.items?.length).toBe(50);
 }, 10000);
 
 test('fetchAddressTransactions Base', async () => {
@@ -45,7 +45,7 @@ test('fetchAddressTransactions Base', async () => {
     8453,
   );
 
-  expect(transactions.items.length).toBe(50);
+  expect(transactions?.items?.length).toBe(50);
 }, 20000);
 
 test('fetchAddressInfo Base', async () => {
@@ -84,7 +84,7 @@ test('fetchAddressTransactions Address Ethereum', async () => {
   const data = await fetchAddressTransactions(
     '0x62F71A87C6c70ac6144faCb7F7ebd721472005E9',
   );
-  expect(data.items.length).toBe(4);
+  expect(data?.items?.length).toBe(4);
 }, 10000);
 
 test('fetchTokenTransfers Address Ethereum', async () => {

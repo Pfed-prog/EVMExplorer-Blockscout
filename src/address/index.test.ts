@@ -6,6 +6,7 @@ import {
   fetchInternalTransactionsBlockscout,
   fetchAddressCounters,
   fetchTokenTransfersBlockscout,
+  fetchTokensAddress,
 } from './index.js';
 import type { AddressTransactionsBlockscout } from '../../dist/index.cjs';
 
@@ -92,4 +93,18 @@ test('fetchTokenTransfers Address Ethereum', async () => {
     '0x62F71A87C6c70ac6144faCb7F7ebd721472005E9',
   );
   expect(data.items.length).toBe(9);
+}, 10000);
+
+test('fetchTokensAddress Address Ethereum', async () => {
+  const data = await fetchTokensAddress(
+    '0xaD851ef1AD2cCf8F87413e6c274BccBeC37469d2',
+  );
+  expect(data.length).toBe(12);
+}, 10000);
+
+test('fetchTokensAddress Vitalik Ethereum', async () => {
+  const data = await fetchTokensAddress(
+    '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045',
+  );
+  expect(data.length).toBeGreaterThan(6080);
 }, 10000);

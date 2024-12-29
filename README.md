@@ -114,6 +114,47 @@ The `fetchTransactionBlockscout` function returns an object with the following p
 
 You can also go over the transaction visually at [EVM Explorer transaction page](https://evmexplorer.com/transactions/mainnet/0xdc7ddf3d0e53532eeeda7a7a99c88255ccee5a3b4404441278cbbd79b4c85086).
 
+### Fetching Vitalik's Address Tokens
+
+You can also query the blockchain address token balances as demonstrated on [Stack Overflow](https://stackoverflow.com/a/79314959/13943679). For example, let's query [Vitalik's balances](https://evmexplorer.com/contracts/mainnet/0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045):
+
+```js
+export type { AddressTokens } from "@evmexplorer/blockscout";
+export { fetchTokensAddress} from "@evmexplorer/blockscout";
+
+const data: AddressTokens = await fetchTokensAddress(
+  '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045',
+);
+console.log(data.length)
+console.log(data[0])
+```
+
+### Address Tokens Output
+
+```yaml
+6081
+{
+  token: {
+    address: '0x28561B8A2360F463011c16b6Cc0B0cbEF8dbBcad',
+    circulating_market_cap: '75858317.61202328',
+    decimals: '9',
+    exchange_rate: '0.00017784',
+    holders: '14334',
+    icon_url: 'https://assets.coingecko.com/coins/images/50348/small/1000000612.jpg?1727248974',
+    name: 'MOO DENG',
+    symbol: 'MOODENG',
+    total_supply: '420690000000000000000',
+    type: 'ERC-20',
+    volume_24h: '10219755.637613483'
+  },
+  token_id: null,
+  token_instance: null,
+  value: '30000105889157756560'
+}
+```
+
+Vitalik has 6081 tokens. The first token in the array of all 6081 tokens is [Moo Deng token](https://evmexplorer.com/contracts/mainnet/0x28561B8A2360F463011c16b6Cc0B0cbEF8dbBcad).
+
 ## More information
 
 [EVM Explorer - Tracking Smart Contract Transaction Data](https://dspyt.com/evmexplorer)

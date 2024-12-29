@@ -8,6 +8,7 @@ export type {
   TokenTransfersObjects,
   NextPageInternalParams,
   NextPageTokenTransfersParams,
+  AddressTokens,
 } from './address';
 export type { BlockInfoBlockscout, BlockTransactionsBlockscout } from './block';
 export type {
@@ -32,6 +33,7 @@ export {
   fetchAddressInfo,
   fetchInternalTransactionsBlockscout,
   fetchTokenTransfersBlockscout,
+  fetchTokensAddress,
 } from './address';
 export {
   fetchBlockInfoBlockscout,

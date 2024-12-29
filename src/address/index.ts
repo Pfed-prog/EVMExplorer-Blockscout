@@ -213,3 +213,37 @@ export async function fetchTokenTransfersBlockscout(
 
   throw new Error('no transactions');
 }
+
+export type AddressTokens = {
+  token: {
+    address: string;
+    circulating_market_cap: string | null;
+    decimals: string | null;
+    exchange_rate: string | null;
+    holders: string;
+    icon_url: string | null;
+    name: string;
+    symbol: string;
+    total_supply: string;
+    type: 'ERC-20' | 'ERC-721';
+    volume_24h: string | null;
+  };
+  token_id: null;
+  token_instance: null;
+  value: string;
+};
+
+export async function fetchTokensAddress(
+  address: string,
+  chainId?: number,
+): Promise<AddressTokens[]> {
+  const chainProvider: string = getChainProviderBlockscout(chainId);
+  const query: string = `https://${chainProvider}/api/v2/addresses/${address}/token-balances`;
+
+  const response: Response = await fetch(query);
+  const body = (await response.json()) as AddressTokens[];
+
+  if (body) return body;
+
+  throw new Error('no tokens');
+}

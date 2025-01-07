@@ -173,19 +173,21 @@ export async function fetchAddressInfo(
 }
 
 export async function fetchInternalTransactionsBlockscout(
-  hash: string,
-  filter?: string,
+  address: string,
+  parameters?: string,
   chainId?: number,
 ): Promise<InternalTransactionsBlockscout> {
   const chainProvider: string = getChainProviderBlockscout(chainId);
 
   let query: string = '';
-  if (filter) {
-    query = `https://${chainProvider}/api/v2/addresses/${hash}/internal-transactions?filter=${filter}`;
+
+  if (parameters) {
+    query = `https://${chainProvider}/api/v2/addresses/${address}/internal-transactions?${parameters}`;
   }
-  if (!filter) {
-    query = `https://${chainProvider}/api/v2/addresses/${hash}/internal-transactions`;
+  if (!parameters) {
+    query = `https://${chainProvider}/api/v2/addresses/${address}/internal-transactions`;
   }
+
   const response: Response = await fetch(query);
   const body = (await response.json()) as InternalTransactionsBlockscout;
   if (body) return body;
@@ -194,7 +196,7 @@ export async function fetchInternalTransactionsBlockscout(
 }
 
 export async function fetchTokenTransfersBlockscout(
-  hash: string,
+  address: string,
   parameters?: string,
   chainId?: number,
 ): Promise<TokenTransfersBlockscout> {
@@ -202,10 +204,10 @@ export async function fetchTokenTransfersBlockscout(
 
   let query: string = '';
   if (parameters) {
-    query = `https://${chainProvider}/api/v2/addresses/${hash}/token-transfers?${query}`;
+    query = `https://${chainProvider}/api/v2/addresses/${address}/token-transfers?${query}`;
   }
   if (!parameters) {
-    query = `https://${chainProvider}/api/v2/addresses/${hash}/token-transfers`;
+    query = `https://${chainProvider}/api/v2/addresses/${address}/token-transfers`;
   }
   const response: Response = await fetch(query);
   const body = (await response.json()) as any;

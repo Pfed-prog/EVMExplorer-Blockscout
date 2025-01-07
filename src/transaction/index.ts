@@ -80,7 +80,7 @@ export type TransactionBlockscout = {
   has_error_in_internal_txs?: boolean;
   token_transfers: null | TokenTransferBlockscout[];
   base_fee_per_gas: string;
-  timestamp: string;
+  timestamp?: string;
   nonce: number;
   block?: number | null;
   transaction_types: string[];

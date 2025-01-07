@@ -1,6 +1,6 @@
 # EVMExplorer-Blockscout
 
-[EVM Explorer](evmexplorer.com) TypeScript Blockscout v2 sdk.
+[EVM Explorer](https://evmexplorer.com) TypeScript Blockscout v2 sdk.
 
 ## 📚 Install
 
@@ -120,7 +120,7 @@ You can also query the blockchain address token balances as demonstrated on [Sta
 
 ```js
 export type { AddressTokens } from "@evmexplorer/blockscout";
-export { fetchTokensAddress} from "@evmexplorer/blockscout";
+export { fetchTokensAddress } from "@evmexplorer/blockscout";
 
 const data: AddressTokens = await fetchTokensAddress(
   '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045',

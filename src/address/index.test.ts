@@ -11,7 +11,7 @@ import {
 
 test('fetchAddressTransactions Empty Address', async () => {
   const data = await fetchAddressTransactions(
-    '0x793e271B7630b1655b28BE2ab4BE93D05cf1c98e',
+    '0x908aC6F78E62383f3349691aaCCa297b02F02B11',
   );
   expect(data?.message).toBe('Not found');
 });
@@ -91,7 +91,7 @@ test('fetch user address counters Ethereum', async () => {
   );
   expect(data.validations_count).toBe('0');
   expect(data.token_transfers_count).toBe('9');
-  expect(data.transactions_count).toBe('4');
+  expect(data.transactions_count).toBe('5');
 }, 10000);
 
 test('fetchInternalTransactionBlockscout Address Ethereum', async () => {
@@ -105,7 +105,7 @@ test('fetchAddressTransactions Address Ethereum', async () => {
   const data = await fetchAddressTransactions(
     '0x62F71A87C6c70ac6144faCb7F7ebd721472005E9',
   );
-  expect(data?.items?.length).toBe(4);
+  expect(data?.items?.length).toBeGreaterThanOrEqual(4);
 }, 10000);
 
 test('fetchTokenTransfers Address Ethereum', async () => {

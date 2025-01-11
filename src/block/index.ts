@@ -7,9 +7,9 @@ import type {
 
 export type BlockInfoBlockscout = {
   base_fee_per_gas: string;
-  blob_gas_price: null;
+  blob_gas_price: string | null;
   blob_gas_used: string;
-  blob_tx_count: number;
+  blob_transaction_count: number;
   burnt_blob_fees: string;
   burnt_fees: string;
   burnt_fees_percentage: number;
@@ -25,14 +25,14 @@ export type BlockInfoBlockscout = {
   nonce: string;
   parent_hash: string;
   priority_fee: string;
-  rewards: Array<object>;
+  rewards: [{ reward: string; type: 'Miner Reward' }];
   size: number;
   timestamp: string;
   total_difficulty: string;
-  tx_count: number;
-  tx_fees: string;
-  type: string;
-  uncles_hashes: Array<any>;
+  transaction_count: number;
+  transaction_fees: string;
+  type: 'block';
+  uncles_hashes: [];
   withdrawals_count: number;
 };
 

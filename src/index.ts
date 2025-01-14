@@ -12,6 +12,14 @@ export type {
 } from './address';
 export type { BlockInfoBlockscout, BlockTransactionsBlockscout } from './block';
 export type {
+  ABIInputsOutputs,
+  ABIJsonObject,
+  ABIJsonObjectReads,
+  ABIJsonObjectWrites,
+  SmartContract,
+  ContractReadQuery,
+} from './contract';
+export type {
   SearchItemsBlockscout,
   NextPageSearch,
   SearchBlockscout,
@@ -39,6 +47,12 @@ export {
   fetchBlockInfoBlockscout,
   fetchBlockTransactionsBlockscout,
 } from './block';
+export {
+  fetchSmartContractBlockscout,
+  fetchSmartContractReadMethodsBlockscout,
+  fetchSmartContractWriteMethodsBlockscout,
+  fetchSmartContractQueryReadBlockscout,
+} from './contract';
 export { fetchSearchBlockscout } from './search';
 export { fetchStatsBlockscout } from './stats';
 export { fetchTokenInfo } from './token';

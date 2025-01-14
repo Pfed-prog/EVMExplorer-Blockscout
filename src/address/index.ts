@@ -48,7 +48,7 @@ export type CountersContractBlockscout = {
   validations_count: string;
 };
 
-export type InternalTransactionsObjects = {
+export type InternalTransactionsObject = {
   block_index: number;
   block_number: number;
   created_contract: null;
@@ -73,11 +73,11 @@ export type NextPageInternalParams = {
 };
 
 export type InternalTransactionsBlockscout = {
-  items: InternalTransactionsObjects[];
+  items: InternalTransactionsObject[];
   next_page_params: NextPageInternalParams;
 };
 
-export type TokenTransfersObjects = {
+export type TokenTransfersObject = {
   block_hash: string;
   block_number: number;
   from: TransactionAddressBlockscout;
@@ -87,7 +87,7 @@ export type TokenTransfersObjects = {
   to: TransactionAddressBlockscout;
   token: TokenBlockscout;
   total: {
-    decimals: number;
+    decimals: number | null;
     value: string;
   };
   transaction_hash: string;
@@ -97,12 +97,10 @@ export type TokenTransfersObjects = {
 export type NextPageTokenTransfersParams = {
   block_number: number;
   index: number;
-  items_count: number;
-  transaction_index: number;
 };
 
 export type TokenTransfersBlockscout = {
-  items: TokenTransfersObjects[];
+  items: TokenTransfersObject[];
   next_page_params: NextPageTokenTransfersParams;
 };
 
@@ -204,13 +202,13 @@ export async function fetchTokenTransfersBlockscout(
 
   let query: string = '';
   if (parameters) {
-    query = `https://${chainProvider}/api/v2/addresses/${address}/token-transfers?${query}`;
+    query = `https://${chainProvider}/api/v2/addresses/${address}/token-transfers?${parameters}`;
   }
   if (!parameters) {
     query = `https://${chainProvider}/api/v2/addresses/${address}/token-transfers`;
   }
   const response: Response = await fetch(query);
-  const body = (await response.json()) as any;
+  const body = (await response.json()) as TokenTransfersBlockscout;
   if (body) return body;
 
   throw new Error('no transactions');

@@ -98,7 +98,7 @@ test('fetchInternalTransactionBlockscout Address Ethereum', async () => {
   const data = await fetchInternalTransactionsBlockscout(
     '0x62F71A87C6c70ac6144faCb7F7ebd721472005E9',
   );
-  expect(data.items.length).toBeGreaterThan(1);
+  expect(data.items.length).toBeGreaterThanOrEqual(2);
 }, 10000);
 
 test('fetchAddressTransactions Address Ethereum', async () => {
@@ -127,4 +127,40 @@ test('fetchTokensAddress Vitalik Ethereum', async () => {
     '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045',
   );
   expect(data.length).toBeGreaterThan(6080);
+}, 20000);
+
+test('fetchTokenTransfers Address Ethereum', async () => {
+  const data = await fetchTokenTransfersBlockscout(
+    '0x531b6A4b3F962208EA8Ed5268C642c84BB29be0b',
+  );
+  expect(data.items.length).toBe(50);
+}, 10000);
+
+test('fetchTokenTransfersBlockscout second page Ethereum', async () => {
+  const transactions = await fetchTokenTransfersBlockscout(
+    '0x57e114B691Db790C35207b2e685D4A43181e6061',
+  );
+
+  expect(transactions?.items?.length).toBe(50);
+
+  const array1: string[] = [];
+  const map1 = transactions?.items?.map((x) => {
+    array1.push(x.transaction_hash + x.log_index);
+  });
+  expect([...new Set(array1)].length).toBe(50);
+
+  const transactionsSecondPage = await fetchTokenTransfersBlockscout(
+    '0x57e114B691Db790C35207b2e685D4A43181e6061',
+    `block_number=${transactions?.next_page_params?.block_number}&index=${transactions?.next_page_params?.index}`,
+  );
+  expect(transactionsSecondPage?.items?.length).toBe(50);
+
+  const array2: string[] = [];
+  const map2 = transactionsSecondPage?.items?.map((x) => {
+    array2.push(x.transaction_hash + x.log_index);
+  });
+
+  expect([...new Set(array2)].length).toBe(50);
+
+  expect([...new Set(array1.concat(array2))].length).toBe(100);
 }, 20000);

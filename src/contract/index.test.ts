@@ -40,7 +40,7 @@ test('fetchSmartContractReadMethodsBlockscout Ape Coin', async () => {
     1,
   );
   expect(data.length).toBe(6);
-}, 10000);
+}, 20000);
 
 test('fetchSmartContractWriteMethodsBlockscout Ape Coin', async () => {
   const data = await fetchSmartContractWriteMethodsBlockscout(
@@ -66,4 +66,4 @@ test('fetchSmartContractWriteMethodsBlockscout Aave Lending Pool v1', async () =
     1,
   );
   expect(data.is_error).toBe(false);
-}, 10000);
+}, 20000);

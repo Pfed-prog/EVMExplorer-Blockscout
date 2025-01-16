@@ -45,7 +45,10 @@ export type BlockTransactionsBlockscout = {
   };
 };
 
-export async function fetchBlockInfoBlockscout(block: number, chainId: number) {
+export async function fetchBlockInfoBlockscout(
+  block: number,
+  chainId?: number,
+) {
   const chainProvider: string = getChainProviderBlockscout(chainId);
   const query: string = `https://${chainProvider}/api/v2/blocks/${block}`;
 
@@ -56,7 +59,7 @@ export async function fetchBlockInfoBlockscout(block: number, chainId: number) {
 
 export async function fetchBlockTransactionsBlockscout(
   block: number,
-  chainId: number,
+  chainId?: number,
 ) {
   const chainProvider: string = getChainProviderBlockscout(chainId);
   const query: string = `https://${chainProvider}/api/v2/blocks/${block}/transactions`;

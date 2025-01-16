@@ -5,11 +5,11 @@ import {
 import { test, expect } from 'vitest';
 
 test('fetchSearchBlockscout Ethereum', async () => {
-  const data = await fetchBlockInfoBlockscout(21598737, 1);
+  const data = await fetchBlockInfoBlockscout(21598737);
   expect(data.gas_used).toBe('4314996');
-}, 10000);
+}, 20000);
 
 test('fetchBlockTransactionsBlockscout', async () => {
-  const data = await fetchBlockTransactionsBlockscout(21598737, 1);
+  const data = await fetchBlockTransactionsBlockscout(21598737);
   expect(data.items.length).toBe(50);
-}, 10000);
+}, 20000);

@@ -162,7 +162,7 @@ You can also query the latest block transactions with `Ethers` provider as demon
 ```js
 import { fetchBlockTransactionsBlockscout } from '@evmexplorer/blockscout';
 const block = await provider.getBlock();
-const data = await fetchBlockTransactionsBlockscout(block, 1);
+const data = await fetchBlockTransactionsBlockscout(block);
 ```
 
 ## More information

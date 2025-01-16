@@ -51,7 +51,7 @@ test('fetchAddressTransactions second page Ethereum', async () => {
   expect([...new Set(array2)].length).toBe(50);
 
   expect([...new Set(array1.concat(array2))].length).toBe(100);
-}, 20000);
+}, 40000);
 
 test('fetchAddressTransactions Base', async () => {
   const transactions = await fetchAddressTransactions(
@@ -70,7 +70,7 @@ test('fetchAddressInfo Base', async () => {
   );
 
   expect(addressData.hash).toBe('0x940181a94A35A4569E4529A3CDfB74e38FD98631');
-}, 10000);
+}, 20000);
 
 test('fetchInternalTransactionBlockscout Ethereum', async () => {
   const data = await fetchInternalTransactionsBlockscout(
@@ -106,7 +106,7 @@ test('fetchAddressTransactions Address Ethereum', async () => {
     '0x62F71A87C6c70ac6144faCb7F7ebd721472005E9',
   );
   expect(data?.items?.length).toBeGreaterThanOrEqual(4);
-}, 10000);
+}, 20000);
 
 test('fetchTokenTransfers Address Ethereum', async () => {
   const data = await fetchTokenTransfersBlockscout(
@@ -120,14 +120,14 @@ test('fetchTokensAddress Address Ethereum', async () => {
     '0xaD851ef1AD2cCf8F87413e6c274BccBeC37469d2',
   );
   expect(data.length).toBeGreaterThan(10);
-}, 10000);
+}, 20000);
 
 test('fetchTokensAddress Vitalik Ethereum', async () => {
   const data = await fetchTokensAddress(
     '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045',
   );
   expect(data.length).toBeGreaterThan(6080);
-}, 20000);
+}, 30000);
 
 test('fetchTokenTransfers Address Ethereum', async () => {
   const data = await fetchTokenTransfersBlockscout(

@@ -45,32 +45,23 @@ export type BlockTransactionsBlockscout = {
   };
 };
 
-export async function fetchBlockInfoBlockscout(
-  chainId: number,
-  block?: number,
-) {
-  if (block) {
-    const chainProvider: string = getChainProviderBlockscout(chainId);
-    const query: string = `https://${chainProvider}/api/v2/blocks/${block}`;
+export async function fetchBlockInfoBlockscout(block: number, chainId: number) {
+  const chainProvider: string = getChainProviderBlockscout(chainId);
+  const query: string = `https://${chainProvider}/api/v2/blocks/${block}`;
 
-    const response: Response = await fetch(query);
-    const body = (await response.json()) as BlockInfoBlockscout;
-    return body;
-  }
-  throw new Error('no block');
+  const response: Response = await fetch(query);
+  const body = (await response.json()) as BlockInfoBlockscout;
+  return body;
 }
 
 export async function fetchBlockTransactionsBlockscout(
+  block: number,
   chainId: number,
-  block?: number,
 ) {
-  if (block) {
-    const chainProvider: string = getChainProviderBlockscout(chainId);
-    const query: string = `https://${chainProvider}/api/v2/blocks/${block}/transactions`;
+  const chainProvider: string = getChainProviderBlockscout(chainId);
+  const query: string = `https://${chainProvider}/api/v2/blocks/${block}/transactions`;
 
-    const response: Response = await fetch(query);
-    const body = (await response.json()) as BlockTransactionsBlockscout;
-    return body;
-  }
-  throw new Error('no block');
+  const response: Response = await fetch(query);
+  const body = (await response.json()) as BlockTransactionsBlockscout;
+  return body;
 }

@@ -65,6 +65,5 @@ test('fetchSmartContractWriteMethodsBlockscout Aave Lending Pool v1', async () =
     [],
     1,
   );
-  console.log(data.result);
   expect(data.is_error).toBe(false);
 }, 10000);

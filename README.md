@@ -155,6 +155,16 @@ console.log(data[0])
 
 Vitalik has 6081 tokens. The first token in the array of all 6081 tokens is [Moo Deng token](https://evmexplorer.com/contracts/mainnet/0x28561B8A2360F463011c16b6Cc0B0cbEF8dbBcad).
 
+## Fetching Latest Block Transactions
+
+You can also query the latest block transactions with `Ethers` provider as demonstrated on [Stack Overflow](https://stackoverflow.com/a/79361865/13943679).
+
+```js
+import { fetchBlockTransactionsBlockscout } from '@evmexplorer/blockscout';
+const block = await provider.getBlock();
+const data = await fetchBlockTransactionsBlockscout(block, 1);
+```
+
 ## More information
 
 [EVM Explorer - Tracking Smart Contract Transaction Data](https://dspyt.com/evmexplorer)

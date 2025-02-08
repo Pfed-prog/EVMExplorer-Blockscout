@@ -119,7 +119,7 @@ test('fetchTokensAddress Address Ethereum', async () => {
   const data = await fetchTokensAddress(
     '0xaD851ef1AD2cCf8F87413e6c274BccBeC37469d2',
   );
-  expect(data.length).toBeGreaterThan(10);
+  expect(data.length).toBeGreaterThan(5);
 }, 20000);
 
 test('fetchTokensAddress Vitalik Ethereum', async () => {

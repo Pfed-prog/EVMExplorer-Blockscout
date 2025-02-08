@@ -7,12 +7,12 @@
   resolved "https://registry.yarnpkg.com/@andrewbranch/untar.js/-/untar.js-1.0.3.tgz#ba9494f85eb83017c5c855763969caf1d0adea00"
   integrity sha512-Jh15/qVmrLGhkKJBdXlK1+9tY4lZruYjsgkDFj08ZmDiWVBLJcqkok7Z0/R0In+i1rScBpJlSvrTS2Lm41Pbnw==
 
-"@arethetypeswrong/cli@^0.16.4":
-  version "0.16.4"
-  resolved "https://registry.yarnpkg.com/@arethetypeswrong/cli/-/cli-0.16.4.tgz#b98499de391e5665845c955672f01864e9a54c0b"
-  integrity sha512-qMmdVlJon5FtA+ahn0c1oAVNxiq4xW5lqFiTZ21XHIeVwAVIQ+uRz4UEivqRMsjVV1grzRgJSKqaOrq1MvlVyQ==
+"@arethetypeswrong/cli@^0.17.3":
+  version "0.17.3"
+  resolved "https://registry.yarnpkg.com/@arethetypeswrong/cli/-/cli-0.17.3.tgz#f5dc7a0b2ac894275f56c0848e9c28d7422310e0"
+  integrity sha512-wI9ZSTweunmzHboSyYtWRFpba9fM9mpX1g7EUoRr+86zHSd7NR7svb6EmJD2hv1V+SoisB2fERu6EQGGEfQ8oQ==
   dependencies:
-    "@arethetypeswrong/core" "0.16.4"
+    "@arethetypeswrong/core" "0.17.3"
     chalk "^4.1.2"
     cli-table3 "^0.6.3"
     commander "^10.0.1"
@@ -20,10 +20,10 @@
     marked-terminal "^7.1.0"
     semver "^7.5.4"
 
-"@arethetypeswrong/core@0.16.4":
-  version "0.16.4"
-  resolved "https://registry.yarnpkg.com/@arethetypeswrong/core/-/core-0.16.4.tgz#2e598dc1deea7f47ae7361ee4f0cef7f1aed3256"
-  integrity sha512-RI3HXgSuKTfcBf1hSEg1P9/cOvmI0flsMm6/QL3L3wju4AlHDqd55JFPfXs4pzgEAgy5L9pul4/HPPz99x2GvA==
+"@arethetypeswrong/core@0.17.3":
+  version "0.17.3"
+  resolved "https://registry.yarnpkg.com/@arethetypeswrong/core/-/core-0.17.3.tgz#ddcf903660f971e4b9948c6691f9b2f04919f5f0"
+  integrity sha512-2TB7O5JmC7UX7QHRGGftxRVQjV4Ce6oOIDGIDDERyT9dQ8lK/tRGfFubzO80rWeXm/gSrA8jirlXSWSE1i5ynQ==
   dependencies:
     "@andrewbranch/untar.js" "^1.0.3"
     cjs-module-lexer "^1.2.3"

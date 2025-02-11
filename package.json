@@ -33,13 +33,13 @@
   "author": "Pavel Fedotov",
   "license": "MIT",
   "devDependencies": {
-    "@arethetypeswrong/cli": "^0.16.4",
+    "@arethetypeswrong/cli": "^0.17.3",
     "@changesets/cli": "^2.27.9",
     "@types/node": "^22.7.5",
     "prettier": "^3.3.3",
     "tsup": "^8.3.0",
     "typescript": "^5.6.3",
-    "vitest": "^2.1.8"
+    "vitest": "^3.0.5"
   },
   "repository": {
     "type": "git",

@@ -1,4 +1,4 @@
-import type { TokenBlockscout } from '../token';
+import type { TokenBlockscout } from '../tokens';
 
 import { getChainProviderBlockscout } from '../utils';
 

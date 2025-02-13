@@ -25,7 +25,11 @@ export type {
   SearchBlockscout,
 } from './search';
 export type { StatsBlockscout } from './stats';
-export type { TokenBlockscout } from './token';
+export type {
+  TokenBlockscout,
+  NFTIdBlockscout,
+  NFTOwnerBlockscout,
+} from './tokens';
 export type {
   Fee,
   DecodedInput,
@@ -55,6 +59,6 @@ export {
 } from './contract';
 export { fetchSearchBlockscout } from './search';
 export { fetchStatsBlockscout } from './stats';
-export { fetchTokenInfo } from './token';
+export { fetchTokenInfo, fetchNFTIdInfo } from './tokens';
 export { fetchTransactionBlockscout } from './transaction';
 export { getChainProviderBlockscout } from './utils';

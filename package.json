@@ -1,6 +1,6 @@
 {
   "name": "@evmexplorer/blockscout",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "description": "EVM Explorer TypeScript BlockScout V2 sdk",
   "main": "dist/index.js",
   "homepage": "https://github.com/Pfed-prog/EVMExplorer-Blockscout",
@@ -33,13 +33,13 @@
   "author": "Pavel Fedotov",
   "license": "MIT",
   "devDependencies": {
-    "@arethetypeswrong/cli": "^0.17.3",
+    "@arethetypeswrong/cli": "0.17.4",
     "@changesets/cli": "^2.27.9",
-    "@types/node": "^22.7.5",
-    "prettier": "^3.3.3",
-    "tsup": "^8.3.0",
+    "@types/node": "22.13.5",
+    "prettier": "3.5.2",
+    "tsup": "8.4.0",
     "typescript": "^5.6.3",
-    "vitest": "^3.0.5"
+    "vitest": "3.0.7"
   },
   "repository": {
     "type": "git",

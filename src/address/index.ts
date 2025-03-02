@@ -36,9 +36,8 @@ export type AddressInfoBlockscout = {
 };
 
 export type AddressTransactionsBlockscout = {
-  items?: TransactionBlockscout[];
-  next_page_params?: NextPageParams;
-  message?: string;
+  items: TransactionBlockscout[];
+  next_page_params: NextPageParams | null;
 };
 
 export type CountersContractBlockscout = {

@@ -13,7 +13,7 @@ test('fetchAddressTransactions Empty Address', async () => {
   const data = await fetchAddressTransactions(
     '0x908aC6F78E62383f3349691aaCCa297b02F02B11',
   );
-  expect(data?.message).toBe('Not found');
+  expect(data.next_page_params).toBe(null);
 }, 20000);
 
 test('fetchAddressTransactions Ethereum', async () => {

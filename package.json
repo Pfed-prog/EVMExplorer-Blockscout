@@ -33,7 +33,7 @@
   "author": "Pavel Fedotov",
   "license": "MIT",
   "devDependencies": {
-    "@arethetypeswrong/cli": "0.17.4",
+    "@arethetypeswrong/cli": "0.18.0",
     "@changesets/cli": "^2.27.9",
     "@types/node": "22.14.1",
     "prettier": "3.5.3",

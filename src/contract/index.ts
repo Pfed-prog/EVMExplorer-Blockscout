@@ -38,15 +38,12 @@ export type ABIJsonObjectWrites = {
 };
 
 export type SmartContract = {
-  has_methods_read: boolean;
   is_self_destructed: boolean;
-  has_custom_methods_write: boolean;
   file_path: string;
   source_code: string;
   deployed_bytecode: string;
   optimization_enabled: boolean;
   verified_twin_address_hash: string | null;
-  is_verified: boolean;
   compiler_settings: {
     libraries: Object | { [key: string]: Object };
     metadata: {
@@ -61,27 +58,23 @@ export type SmartContract = {
   };
   optimizations_runs: number;
   sourcify_repo_url: string | null;
-  decoded_constructor_args: Array<string | Object> | null;
-  has_methods_write: boolean;
+  decoded_constructor_args: Array<[string, Object]> | null;
   compiler_version: string;
-  is_verified_via_verifier_alliance: boolean;
   verified_at: string;
+  is_verified_via_verifier_alliance: boolean;
   implementations: Array<{ address: string; name: string }>;
   proxy_type: null | 'eip1967';
   external_libraries: [];
+  status: 'success';
   creation_bytecode: string;
   name: string;
   is_blueprint: boolean;
   license_type: string;
   is_fully_verified: boolean;
-  has_methods_read_proxy: boolean;
-  is_vyper_contract: boolean;
   is_verified_via_eth_bytecode_db: boolean;
   language: 'solidity';
-  evm_version: 'istanbul';
+  evm_version: 'istanbul' | 'default';
   can_be_visualized_via_sol2uml: boolean;
-  has_methods_write_proxy: boolean;
-  has_custom_methods_read: boolean;
   is_verified_via_sourcify: boolean;
   additional_sources: [];
   certified: boolean;
@@ -108,53 +101,5 @@ export async function fetchSmartContractBlockscout(
 
   const response: Response = await fetch(query);
   const body = (await response.json()) as SmartContract;
-  return body;
-}
-
-export async function fetchSmartContractReadMethodsBlockscout(
-  address: string,
-  chainId?: number,
-): Promise<Array<ABIJsonObjectReads>> {
-  const chainProvider: string = getChainProviderBlockscout(chainId);
-  const query: string = `https://${chainProvider}/api/v2/smart-contracts/${address}/methods-read`;
-
-  const response: Response = await fetch(query);
-  const body = (await response.json()) as Array<ABIJsonObjectReads>;
-  return body;
-}
-
-export async function fetchSmartContractWriteMethodsBlockscout(
-  address: string,
-  chainId?: number,
-): Promise<Array<ABIJsonObjectWrites>> {
-  const chainProvider: string = getChainProviderBlockscout(chainId);
-  const query: string = `https://${chainProvider}/api/v2/smart-contracts/${address}/methods-write`;
-
-  const response: Response = await fetch(query);
-  const body = (await response.json()) as Array<ABIJsonObjectWrites>;
-  return body;
-}
-
-export async function fetchSmartContractQueryReadBlockscout(
-  address: string,
-  method_id: string,
-  args: Array<string> = [],
-  chainId?: number,
-): Promise<ContractReadQuery> {
-  const chainProvider: string = getChainProviderBlockscout(chainId);
-  const query: string = `https://${chainProvider}/api/v2/smart-contracts/${address}/query-read-method`;
-
-  const response: Response = await fetch(query, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      args: args,
-      method_id: method_id,
-      contract_type: 'regular',
-    }),
-  });
-  const body = (await response.json()) as ContractReadQuery;
   return body;
 }

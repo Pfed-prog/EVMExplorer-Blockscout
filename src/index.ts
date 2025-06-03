@@ -53,9 +53,6 @@ export {
 } from './block';
 export {
   fetchSmartContractBlockscout,
-  fetchSmartContractReadMethodsBlockscout,
-  fetchSmartContractWriteMethodsBlockscout,
-  fetchSmartContractQueryReadBlockscout,
 } from './contract';
 export { fetchSearchBlockscout } from './search';
 export { fetchStatsBlockscout } from './stats';

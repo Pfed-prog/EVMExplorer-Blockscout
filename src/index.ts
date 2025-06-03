@@ -51,9 +51,7 @@ export {
   fetchBlockInfoBlockscout,
   fetchBlockTransactionsBlockscout,
 } from './block';
-export {
-  fetchSmartContractBlockscout,
-} from './contract';
+export { fetchSmartContractBlockscout } from './contract';
 export { fetchSearchBlockscout } from './search';
 export { fetchStatsBlockscout } from './stats';
 export { fetchTokenInfo, fetchNFTIdInfo } from './tokens';

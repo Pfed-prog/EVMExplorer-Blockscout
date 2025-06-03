@@ -1,7 +1,5 @@
 import type { SmartContract } from './index.js';
-import {
-  fetchSmartContractBlockscout,
-} from './index.js';
+import { fetchSmartContractBlockscout } from './index.js';
 import { test, expect } from 'vitest';
 
 test('fetchSmartContractBlockscoutEthereum Ape Coin ERC20', async () => {

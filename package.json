@@ -36,7 +36,7 @@
     "@arethetypeswrong/cli": "0.18.2",
     "@changesets/cli": "^2.27.9",
     "@types/node": "24.0.1",
-    "prettier": "3.5.3",
+    "prettier": "3.6.1",
     "tsup": "8.5.0",
     "typescript": "^5.6.3",
     "vitest": "3.2.3"

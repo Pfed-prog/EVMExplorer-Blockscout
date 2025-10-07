@@ -1,13 +1,14 @@
 import { getChainProviderBlockscout } from '../utils';
 
 export type TokenBlockscout = {
-  address: string;
+  address_hash: string;
   circulating_market_cap: string | null;
   decimals: string | null;
   exchange_rate: string | null;
-  holders: string;
+  holders_count: string;
   icon_url: string | null;
   name: string;
+  reputation: string;
   symbol: string;
   total_supply: string | null;
   type: 'ERC-20' | 'ERC-721' | 'ERC-1155';

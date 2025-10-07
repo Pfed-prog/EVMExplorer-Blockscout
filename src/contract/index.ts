@@ -38,13 +38,15 @@ export type ABIJsonObjectWrites = {
 };
 
 export type SmartContract = {
-  is_self_destructed: boolean;
   file_path: string;
+  creation_status: string;
   source_code: string;
   deployed_bytecode: string;
   optimization_enabled: boolean;
   verified_twin_address_hash: string | null;
+  is_verified: boolean;
   compiler_settings: {
+    evmVersion: string;
     libraries: Object | { [key: string]: Object };
     metadata: {
       bytecodeHash: string;
@@ -65,7 +67,6 @@ export type SmartContract = {
   implementations: Array<{ address: string; name: string }>;
   proxy_type: null | 'eip1967';
   external_libraries: [];
-  status: 'success';
   creation_bytecode: string;
   name: string;
   is_blueprint: boolean;
@@ -101,5 +102,6 @@ export async function fetchSmartContractBlockscout(
 
   const response: Response = await fetch(query);
   const body = (await response.json()) as SmartContract;
+
   return body;
 }

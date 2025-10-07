@@ -10,7 +10,7 @@ test('USDT', async () => {
   const data: TokenBlockscout = await fetchTokenInfo(
     '0xdAC17F958D2ee523a2206206994597C13D831ec7',
   );
-  expect(data.address).toBe('0xdAC17F958D2ee523a2206206994597C13D831ec7');
+  expect(data.address_hash).toBe('0xdAC17F958D2ee523a2206206994597C13D831ec7');
   expect(data.decimals).toBe('6');
   expect(data.name).toBe('Tether');
   expect(data.symbol).toBe('USDT');

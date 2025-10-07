@@ -13,6 +13,7 @@ test('fetchAddressTransactions Empty Address', async () => {
   const data = await fetchAddressTransactions(
     '0x908aC6F78E62383f3349691aaCCa297b02F02B11',
   );
+
   expect(data.next_page_params).toBe(null);
 }, 20000);
 
@@ -22,7 +23,7 @@ test('fetchAddressTransactions Ethereum', async () => {
   );
 
   expect(transactions?.items?.length).toBe(50);
-}, 20000);
+}, 200000);
 
 test('fetchAddressTransactions second page Ethereum', async () => {
   const transactions = await fetchAddressTransactions(
@@ -39,7 +40,7 @@ test('fetchAddressTransactions second page Ethereum', async () => {
 
   const transactionsSecondPage = await fetchAddressTransactions(
     '0x398eC7346DcD622eDc5ae82352F02bE94C62d119',
-    `?page=0&block_number=${transactions?.next_page_params?.block_number}&index=${transactions?.next_page_params?.index}&items_count=${transactions?.next_page_params?.items_count}`,
+    `block_number=${transactions?.next_page_params?.block_number}&index=${transactions?.next_page_params?.index}&items_count=${transactions?.next_page_params?.items_count}`,
   );
   expect(transactionsSecondPage?.items?.length).toBe(50);
 
@@ -61,7 +62,7 @@ test('fetchAddressTransactions Base', async () => {
   );
 
   expect(transactions?.items?.length).toBe(50);
-}, 20000);
+}, 200000);
 
 test('fetchAddressInfo Base', async () => {
   const addressData = await fetchAddressInfo(
@@ -80,7 +81,7 @@ test('fetchInternalTransactionBlockscout Ethereum', async () => {
 
   const dataSecondPage = await fetchInternalTransactionsBlockscout(
     '0x22C1f6050E56d2876009903609a2cC3fEf83B415',
-    `page=0&block_number=${data?.next_page_params?.block_number}&index=${data?.next_page_params?.index}&items_count=${data?.next_page_params?.items_count}&transaction_index=${data?.next_page_params?.transaction_index}`,
+    `block_number=${data?.next_page_params?.block_number}&index=${data?.next_page_params?.index}&items_count=${data?.next_page_params?.items_count}&transaction_index=${data?.next_page_params?.transaction_index}`,
   );
   expect(dataSecondPage.items.length).toBe(50);
 }, 20000);

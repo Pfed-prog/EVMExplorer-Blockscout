@@ -8,7 +8,6 @@ test('fetchSmartContractBlockscoutEthereum Ape Coin ERC20', async () => {
     1,
   );
 
-  expect(data.status).toBe('success');
   expect(data.verified_at).toBe('2023-07-05T12:35:59.959466Z');
 }, 20000);
 
@@ -17,6 +16,6 @@ test('fetchSmartContractBlockscoutEthereum Aave Lending Pool V1', async () => {
     '0x398eC7346DcD622eDc5ae82352F02bE94C62d119',
     1,
   );
-  expect(data.status).toBe('success');
+  
   expect(data.verified_at).toBe('2024-01-08T12:26:52.549853Z');
 }, 10000);

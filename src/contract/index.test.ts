@@ -16,6 +16,6 @@ test('fetchSmartContractBlockscoutEthereum Aave Lending Pool V1', async () => {
     '0x398eC7346DcD622eDc5ae82352F02bE94C62d119',
     1,
   );
-  
+
   expect(data.verified_at).toBe('2024-01-08T12:26:52.549853Z');
 }, 10000);

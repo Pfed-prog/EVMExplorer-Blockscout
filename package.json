@@ -1,6 +1,6 @@
 {
   "name": "@evmexplorer/blockscout",
-  "version": "0.0.25",
+  "version": "0.0.27",
   "description": "EVM Explorer TypeScript BlockScout V2 sdk",
   "main": "dist/index.js",
   "homepage": "https://github.com/Pfed-prog/EVMExplorer-Blockscout",

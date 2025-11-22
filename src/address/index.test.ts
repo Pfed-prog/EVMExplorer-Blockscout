@@ -73,6 +73,15 @@ test('fetchAddressInfo Base', async () => {
   expect(addressData.hash).toBe('0x940181a94A35A4569E4529A3CDfB74e38FD98631');
 }, 20000);
 
+test('fetchAddressInfo Mode', async () => {
+  const addressData = await fetchAddressInfo(
+    '0xDfc7C877a950e49D2610114102175A06C2e3167a',
+    34443,
+  );
+
+  expect(addressData.hash).toBe('0xDfc7C877a950e49D2610114102175A06C2e3167a');
+}, 20000);
+
 test('fetchInternalTransactionBlockscout Ethereum', async () => {
   const data = await fetchInternalTransactionsBlockscout(
     '0x22C1f6050E56d2876009903609a2cC3fEf83B415',

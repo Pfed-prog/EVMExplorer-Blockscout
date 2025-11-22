@@ -13,7 +13,7 @@ export function getChainProviderBlockscout(chainId?: number): string {
     case 8453:
       return 'base.blockscout.com';
     case 34443:
-      return 'explorer.mode.network';
+      return 'explorer-mode-mainnet-0.t.conduit.xyz';
     case 42161:
       return 'arbitrum.blockscout.com';
     case 7777777:

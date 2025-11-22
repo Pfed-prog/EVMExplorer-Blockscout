@@ -28,3 +28,12 @@ test('fetchSmartContractBlockscoutEthereum Aave Lending Pool V1', async () => {
 
   expect(data.verified_at).toBe('2024-05-15T01:39:04.437369Z');
 }, 10000);
+
+test('fetchSmartContractBlockscoutEthereum Aave Lending Pool V1', async () => {
+  const data = await fetchSmartContractBlockscout(
+    '0xDfc7C877a950e49D2610114102175A06C2e3167a',
+    34443,
+  );
+
+  expect(data.verified_at).toBe('2024-04-29T07:24:41.522805Z');
+}, 10000);

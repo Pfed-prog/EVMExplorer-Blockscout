@@ -3,7 +3,7 @@ export function getChainProviderBlockscout(chainId?: number): string {
     case 1:
       return 'eth.blockscout.com';
     case 10:
-      return 'optimism.blockscout.com';
+      return 'explorer.optimism.io';
     case 137:
       return 'polygon.blockscout.com';
     case 314:
